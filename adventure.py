@@ -1,23 +1,17 @@
-
 inventory = []
 
 
 def start_game():
-    """
-    This is the main function that starts the game and presents the first choice.
-    """
-   
     global inventory
     inventory = []
-    
+
     scene_description = (
-        "Welcome to the Enhanced Adventure Game! 👋\n"
+        "Welcome to the Enhanced Adventure Game! \n"
         "You find yourself at a crossroads. A path leads to a dark cave to your left,\n"
         "and to your right, you see an enchanted forest. There is a strange marking on the ground."
     )
     print(scene_description)
 
-    # Feature 1: Looping for Invalid Input
     while True:
         print("\nWhat do you do?")
         print("1. Enter the dark cave.")
@@ -29,15 +23,13 @@ def start_game():
 
         if "1" in choice or "cave" in choice:
             dark_cave()
-            break # Exit the loop because we're moving to a new function
+            break
         elif "2" in choice or "forest" in choice:
             enchanted_forest()
             break
-        # Feature 3: More Complex Story (New Branch)
         elif "3" in choice or "marking" in choice:
             hidden_cellar()
             break
-        # Feature 4: "Look Around" Command
         elif "look" in choice:
             print("\n" + scene_description)
         else:
@@ -45,9 +37,6 @@ def start_game():
 
 
 def dark_cave():
-    """
-    This function is called when the player chooses to enter the cave.
-    """
     scene_description = (
         "\nThe cave is dark and you hear the dripping of water.\n"
         "You can see a faint light deeper inside."
@@ -59,7 +48,7 @@ def dark_cave():
         print("1. Go towards the light.")
         print("2. Go back to the crossroads.")
         print("Type 'look' to see the description again.")
-        
+
         choice = input("> ").lower()
 
         if "1" in choice or "light" in choice:
@@ -76,9 +65,6 @@ def dark_cave():
 
 
 def enchanted_forest():
-    """
-    This function is called when the player chooses to enter the forest.
-    """
     scene_description = (
         "\nThe trees in the forest have glowing leaves, and the air hums with magic.\n"
         "You see a mischievous pixie watching you from a branch."
@@ -90,7 +76,7 @@ def enchanted_forest():
         print("1. Try to talk to the pixie.")
         print("2. Ignore the pixie and walk deeper into the forest.")
         print("Type 'look' to see the description again.")
-        
+
         choice = input("> ").lower()
 
         if "1" in choice or "talk" in choice:
@@ -111,15 +97,12 @@ def enchanted_forest():
 
 
 def ancient_ruins():
-    """
-    This function is called from the dark_cave function.
-    """
     scene_description = (
         "\nYou stumble upon the ruins of an ancient civilization.\n"
         "A large stone tablet with faint carvings stands in the center."
     )
     print(scene_description)
-    
+
     while True:
         print("\nWhat do you do?")
         print("1. Read the tablet.")
@@ -146,15 +129,12 @@ def ancient_ruins():
 
 
 def hidden_cellar():
-    """
-    A new location, accessed from the start. Requires an item to fully solve.
-    """
     scene_description = (
         "\nYou push on the marking and a stone slab slides away, revealing a dark, dusty cellar.\n"
         "In the center of the room is a large, locked chest."
     )
     print(scene_description)
-    
+
     has_found_key = False
 
     while True:
@@ -167,7 +147,6 @@ def hidden_cellar():
         choice = input("> ").lower()
 
         if "1" in choice or "open" in choice:
-            # Check inventory for an item
             if "Old Key" in inventory:
                 print("\nYou use the [Old Key] you found. The lock clicks open!")
                 print("Inside, you find an ancient map to a forgotten kingdom! You WIN! 🗺️")
@@ -193,9 +172,6 @@ def hidden_cellar():
 
 
 def murky_swamp():
-    """
-    A new location that requires an item from the enchanted forest.
-    """
     scene_description = (
         "\nThe path leads you to a swamp shrouded in a thick, magical fog.\n"
         "You can't see more than a few feet ahead of you. It's too dangerous to walk blindly."
@@ -219,7 +195,6 @@ def murky_swamp():
             print("\nYou return to the enchanted forest.")
             enchanted_forest()
             break
-        # Conditional choice based on inventory
         elif ("3" in choice or "fruit" in choice) and "Glowing Fruit" in inventory:
             print("\nYou hold up the [Glowing Fruit]. Its gentle light cuts through the magical fog, revealing a safe stone path!")
             print("You safely cross the swamp. You WIN! ✨")
@@ -230,8 +205,5 @@ def murky_swamp():
             print("Invalid choice. Please try again.")
 
 
-# ==============================================================================
-# Step 4: Running the Game
-# ==============================================================================
 if __name__ == "__main__":
     start_game()
