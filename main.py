@@ -1,6 +1,4 @@
-def main():
-    print("Hello from text-adventure-game!")
-
+from adventure import play_adventure_game
 
 if __name__ == "__main__":
-    main()
+    play_adventure_game()
